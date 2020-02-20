@@ -16,7 +16,7 @@ public class input {
 	/** SEGUNDA LINEA OBTIENE SCORES QUE ALMACENAMOS EN LIBROS**/
 	ArrayList<Book> libros;
 	/** TERCEA **/
-	ArrayList<Libreria> ListaLibrerias;
+	ArrayList<Libreria> listaLibrerias;
 	
 	input (File archivo) throws FileNotFoundException{
 		this.archivo=archivo;
@@ -42,18 +42,20 @@ public class input {
 				switch (nLinea) {
 					case 0:
 						//Books librerias Dias
+						System.out.print("hola");
 						nLibros=Integer.parseInt(orden[0]);
 						System.out.println(nLibros);
-						nLibrerias = Integer.parseInt(orden[1].trim());
-						nDias = Integer.parseInt(orden[2].trim());
+						nLibrerias = Integer.parseInt(orden[1]);
+						nDias = Integer.parseInt(orden[2]);
 						break;
 					case 1:
 						//Puntuaciones de los libros
 						//Creacion de libros
-						//System.out.print("hola");
+						System.out.print("hola");
+						
 						for(int l=0;l<=nLibros-1;l++) {
 							System.out.print("hola");
-							Book b = new Book(l,Integer.parseInt(orden[l].trim()));
+							Book b = new Book(l,Integer.parseInt(orden[l]));
 							libros.add(b);
 						}
 						
@@ -62,22 +64,23 @@ public class input {
 						if (c) {
 							//Creacion de una libreria
 							//Darle numero de libros
-							nLibrosL=Integer.parseInt(orden[0].trim());
+							nLibrosL=Integer.parseInt(orden[0]);
 							//Darle numeros de dias
-							nDiasSU=Integer.parseInt(orden[1].trim());
+							nDiasSU=Integer.parseInt(orden[1]);
 							//Darle velocidad de libros/dia
-							vLibroDia=Integer.parseInt(orden[2].trim());
+							vLibroDia=Integer.parseInt(orden[2]);
 							c=false;
 						}
 						else {
 							//INGRESAR LOS LIBROS EN LA LIBRERIA
 							ArrayList<Book> librosL=new ArrayList<Book>();
 							for	(int x=0;x<=nLibrosL-1;x++) {
-								int index=Integer.parseInt(orden[x].trim());
+								int index=Integer.parseInt(orden[x]);
 								Book añadir = libros.get(index) ;
 								librosL.add(añadir);
 							}
 							Libreria libreria = new Libreria(numL, nDiasSU, vLibroDia, librosL);
+							listaLibrerias.add(libreria);
 							numL++;
 							c=true;
 						}
