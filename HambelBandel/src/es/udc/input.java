@@ -14,9 +14,9 @@ public class input {
 	int nLibrerias;
 	int nDias;
 	/** SEGUNDA LINEA OBTIENE SCORES QUE ALMACENAMOS EN LIBROS**/
-	ArrayList<Book> libros;
+	ArrayList<Book> libros  = new ArrayList<Book>();
 	/** TERCEA **/
-	ArrayList<Libreria> listaLibrerias;
+	ArrayList<Libreria> listaLibrerias = new ArrayList<Libreria>();
 	
 	input (File archivo) throws FileNotFoundException{
 		this.archivo=archivo;
@@ -29,16 +29,17 @@ public class input {
 		try {
 			String linea;
 			//MIENTRAS LEA LINEA
-			int nLinea = 0;
+			int nLinea = -1;
 			boolean c=true;
+			//Contador para las Librerias 
+			int numL=0;//ID de Libreria
+			int nLibrosL=0;//Numero de Libros de cada Libreria
+			int nDiasSU=0;//Dias de sing up
+			int vLibroDia=0;
 			while((linea=br.readLine())!=null){
 				String[] orden=linea.split(" ");
 				nLinea++;
-				//Contador para las Librerias 
-				int numL=0;//ID de Libreria
-				int nLibrosL=0;//Numero de Libros de cada Libreria
-				int nDiasSU=0;//Dias de sing up
-				int vLibroDia=0;
+				
 				switch (nLinea) {
 					case 0:
 						//Books librerias Dias
@@ -74,13 +75,14 @@ public class input {
 						else {
 							//INGRESAR LOS LIBROS EN LA LIBRERIA
 							ArrayList<Book> librosL=new ArrayList<Book>();
-							for	(int x=0;x<=nLibrosL-1;x++) {
+							for	(int x=0;x<nLibrosL;x++) {
 								int index=Integer.parseInt(orden[x]);
 								Book añadir = libros.get(index) ;
 								librosL.add(añadir);
 							}
 							Libreria libreria = new Libreria(numL, nDiasSU, vLibroDia, librosL);
 							listaLibrerias.add(libreria);
+
 							numL++;
 							c=true;
 						}

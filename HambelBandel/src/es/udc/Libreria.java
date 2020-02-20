@@ -12,16 +12,16 @@ public class Libreria {
 	public int puntuacionTotal;
 	public ArrayList<Book> books;
 	public Libreria(int idl, int signupdaysl, int booksdayl, ArrayList<Book> booksl) {
-		this.puntuacionTotal = puntuacionTotal();
-		this.diasQueTarda = diasQueTarda();
 		this.id=idl;
 		this.signupdays=signupdaysl;
 		this.booksday=booksdayl;
 		this.books= booksl;
+		this.puntuacionTotal = puntuacionTotal();
+		this.diasQueTarda = diasQueTarda();
 		Collections.sort(books);
 		
 		 for(Book aux: books){
-	            System.out.println(aux);
+	            System.out.println(aux.score);
 	        }
 	}
 

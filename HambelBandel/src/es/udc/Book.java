@@ -9,9 +9,9 @@ public class Book implements Comparable<Book> {
 	}
 	@Override
 	public int compareTo(Book e) {
-		if(e.score>score) {
+		if(e.score<score) {
 			return -1;
-		} else if (e.score>score) {
+		} else if (e.score==score) {
 			return 0;
 		} else {
 			return 1;
