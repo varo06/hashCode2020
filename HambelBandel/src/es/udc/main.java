@@ -1,5 +1,7 @@
 package es.udc;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class main {
@@ -46,8 +48,11 @@ public class main {
 		
 	}	
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		// TODO Auto-generated method stub
+		File file = new File(args[0]);
+		input prueba = new input(file);
+		prueba.LeerArchivo();
 	}
 
 }
