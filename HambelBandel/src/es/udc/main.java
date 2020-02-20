@@ -1,9 +1,11 @@
 package es.udc;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class main {
-	public static void calcularOrdenLibreria(Libreria A,  ArrayList<Libreria> librerias, ArrayList<Libreria> libreriasOrdenada) {
+	public static void calcularOrdenLibreria(Libreria A,  ArrayList<Libreria> librerias, ArrayList<Libreria> libreriasOrdenada, int dias) {
+		List <Book> librosUsados = new ArrayList<Book>();
 		if(librerias.isEmpty()){
 			libreriasOrdenada.add(A);
 		}
@@ -28,11 +30,23 @@ public class main {
 						}
 					}
 				}
-
-					i++;
+				for(Book book: A.books) {
+					for(Libreria lib : librerias) {
+						for(Book libroABorrar: lib.books) {
+							if(book.id == libroABorrar.id) {
+								lib.books.remove(lib.books.indexOf(libroABorrar));
+								lib.diasQueTarda = lib.diasQueTarda();
+								lib.puntuacionTotal = lib.puntuacionTotal();
+							}
+						}
+					}
 				}
-			libreriasOrdenada.add(A);
-			calcularOrdenLibreria(librerias.remove(0), librerias, libreriasOrdenada);
+				i++;
+			}
+			if(dias-A.diasQueTarda>0){
+				libreriasOrdenada.add(A);
+				calcularOrdenLibreria(librerias.remove(0), librerias, libreriasOrdenada, dias-A.signupdays);
+			}
 		}
 	}
 	/*public int puntuacionFinal(ArrayList<Libreria> libreriasOrdenada, int diasMax) {
