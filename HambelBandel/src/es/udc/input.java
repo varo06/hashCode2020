@@ -65,7 +65,9 @@ public class input {
 						if (c) {
 							//Creacion de una libreria
 							//Darle numero de libros
+							System.out.println(nLinea);
 							nLibrosL=Integer.parseInt(orden[0]);
+							
 							//Darle numeros de dias
 							nDiasSU=Integer.parseInt(orden[1]);
 							//Darle velocidad de libros/dia

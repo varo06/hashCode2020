@@ -2,6 +2,7 @@ package es.udc;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,12 +14,13 @@ public class main {
 		}
 		else {
 			int i = 1;
-			for(Libreria libreria: librerias) {
-				if(A.diasQueTarda > libreria.diasQueTarda) {
+			
+			for(i = 0; i < librerias.size(); i++) {
+				if(A.diasQueTarda > librerias.get(i).diasQueTarda) {
 					
 				}else {
-					if(A.diasQueTarda == libreria.diasQueTarda){
-						if(A.puntuacionTotal> libreria.puntuacionTotal) {
+					if(A.diasQueTarda == librerias.get(i).diasQueTarda){
+						if(A.puntuacionTotal> librerias.get(i).puntuacionTotal) {
 							
 						}
 						else {
@@ -26,26 +28,26 @@ public class main {
 							A = librerias.remove(i);
 						}
 					}else {
-						if(A.diasQueTarda > libreria.diasQueTarda) {
+						if(A.diasQueTarda > librerias.get(i).diasQueTarda) {
 							librerias.add(0,A);
 							A = librerias.remove(i);
 						}
 					}
 				}
+			}
+			if(dias-A.diasQueTarda>0){
 				for(Book book: A.books) {
 					for(Libreria lib : librerias) {
-						for(Book libroABorrar: lib.books) {
-							if(book.id == libroABorrar.id) {
-								lib.books.remove(lib.books.indexOf(libroABorrar));
+						for(int j = 0; j < lib.books.size(); j++) {
+							if(book.id == lib.books.get(j).id) {
+								lib.books.remove(lib.books.indexOf(lib.books.get(j)));
 								lib.diasQueTarda = lib.diasQueTarda();
 								lib.puntuacionTotal = lib.puntuacionTotal();
+								j--;
 							}
 						}
 					}
 				}
-				i++;
-			}
-			if(dias-A.diasQueTarda>0){
 				libreriasOrdenada.add(A);
 				calcularOrdenLibreria(librerias.remove(0), librerias, libreriasOrdenada, dias-A.signupdays);
 			}
@@ -60,11 +62,15 @@ public class main {
 		calcularOrdenLibreria(A, librerias, libreriasOrdenada, diasLimite);
 	}	
 	
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		File file = new File(args[0]);
 		input prueba = new input(file);
 		prueba.LeerArchivo();
+		ArrayList<Libreria> libreriasOrdenada = new ArrayList<Libreria>();
+		algoritmo(prueba.listaLibrerias, libreriasOrdenada, prueba.nDias);
+		Output output = new Output();
+		output.generarSalida(libreriasOrdenada);
 	}
 
 }
