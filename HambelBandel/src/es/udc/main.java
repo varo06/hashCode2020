@@ -8,8 +8,8 @@ public class main {
 			return A;
 		}
 		else {
-			Libreria B;
-			
+			Libreria B = librerias.
+			if()
 		}
 		return B;
 	}
