@@ -14,7 +14,7 @@ public class input {
 	int nLibrerias;
 	int nDias;
 	/** SEGUNDA LINEA OBTIENE SCORES QUE ALMACENAMOS EN LIBROS**/
-	Book[] libros;
+	ArrayList<Book> libros;
 	/** TERCEA **/
 	ArrayList<Libreria> ListaLibrerias;
 	
@@ -42,17 +42,21 @@ public class input {
 				switch (nLinea) {
 					case 0:
 						//Books librerias Dias
-						nLibros=Integer.parseInt(orden[0].trim());
+						nLibros=Integer.parseInt(orden[0]);
+						System.out.println(nLibros);
 						nLibrerias = Integer.parseInt(orden[1].trim());
 						nDias = Integer.parseInt(orden[2].trim());
 						break;
 					case 1:
 						//Puntuaciones de los libros
 						//Creacion de libros
-						libros = new Book[nLibros];
+						//System.out.print("hola");
 						for(int l=0;l<=nLibros-1;l++) {
-							libros[l]=new Book(l,Integer.parseInt(orden[l].trim()));
+							System.out.print("hola");
+							Book b = new Book(l,Integer.parseInt(orden[l].trim()));
+							libros.add(b);
 						}
+						
 						break;
 					default:
 						if (c) {
@@ -69,7 +73,9 @@ public class input {
 							//INGRESAR LOS LIBROS EN LA LIBRERIA
 							ArrayList<Book> librosL=new ArrayList<Book>();
 							for	(int x=0;x<=nLibrosL-1;x++) {
-								librosL.add(libros[Integer.parseInt(orden[0].trim())]);
+								int index=Integer.parseInt(orden[x].trim());
+								Book añadir = libros.get(index) ;
+								librosL.add(añadir);
 							}
 							Libreria libreria = new Libreria(numL, nDiasSU, vLibroDia, librosL);
 							numL++;
