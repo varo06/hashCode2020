@@ -20,7 +20,6 @@ public class input {
 	
 	input (File archivo) throws FileNotFoundException{
 		this.archivo=archivo;
-		LeerArchivo();
 	}
 	
 	void LeerArchivo() throws FileNotFoundException {
@@ -31,10 +30,11 @@ public class input {
 			String linea;
 			//MIENTRAS LEA LINEA
 			int nLinea = 0;
+			boolean c=true;
 			while((linea=br.readLine())!=null){
 				String[] orden=linea.split(" ");
 				nLinea++;
-				boolean c=true;;//Contador para las Librerias 
+				//Contador para las Librerias 
 				int numL=0;//ID de Libreria
 				int nLibrosL=0;//Numero de Libros de cada Libreria
 				int nDiasSU=0;//Dias de sing up
@@ -50,7 +50,7 @@ public class input {
 						//Puntuaciones de los libros
 						//Creacion de libros
 						libros = new Book[nLibros];
-						for(int l=0;l<=nLibros;l++) {
+						for(int l=0;l<=nLibros-1;l++) {
 							libros[l]=new Book(l,Integer.parseInt(orden[l].trim()));
 						}
 						break;
@@ -68,13 +68,14 @@ public class input {
 						else {
 							//INGRESAR LOS LIBROS EN LA LIBRERIA
 							ArrayList<Book> librosL=new ArrayList<Book>();
-							for	(int x=0;x<=nLibrosL;x++) {
+							for	(int x=0;x<=nLibrosL-1;x++) {
 								librosL.add(libros[Integer.parseInt(orden[0].trim())]);
 							}
 							Libreria libreria = new Libreria(numL, nDiasSU, vLibroDia, librosL);
 							numL++;
 							c=true;
 						}
+						break;
 							
 						
 					
