@@ -1,13 +1,6 @@
-package hashcode.humbelbandel;
+package es.udc;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-public class HashCode {
+public class main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -53,6 +46,10 @@ public class HashCode {
 		        i++;;
 		    }
 		}
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
 	}
 
 }
