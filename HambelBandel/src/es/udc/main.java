@@ -55,11 +55,9 @@ public class main {
 		for(Libreria)
 			
 	}*/
-	public static String algoritmo(ArrayList<Libreria> librerias, ArrayList<Book> libros, int diasLimite) {
-
-		
-		return null;
-		
+	public static void algoritmo(ArrayList<Libreria> librerias, ArrayList<Libreria> libreriasOrdenada, int diasLimite) {
+		Libreria A = librerias.remove(0);
+		calcularOrdenLibreria(A, librerias, libreriasOrdenada, diasLimite);
 	}	
 	
 	public static void main(String[] args) throws FileNotFoundException {
