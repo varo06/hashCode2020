@@ -1,6 +1,8 @@
 package es.udc;
 
 import java.util.ArrayList;
+import java.util.Collections;
+
 
 public class Libreria {
 	public int id;
@@ -12,5 +14,11 @@ public class Libreria {
 		this.signupdays=signupdaysl;
 		this.booksday=booksdayl;
 		this.books= booksl;
+		Collections.sort(books);
+		
+		 for(Book aux: books){
+	            System.out.println(aux);
+	        }
 	}
+	
 }
