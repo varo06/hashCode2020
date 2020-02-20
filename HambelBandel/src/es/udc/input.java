@@ -9,7 +9,8 @@ public class input {
 	int nLibreria;
 	int nDias;
 	/** SEGUNDA LINEA OBTIENE SCORES QUE ALMACENAMOS EN LIBROS**/
-	Libro libro;
-	/** TERCEA 
+	//Libro libro;
+	/** TERCEA **/
+	
 	
 }
