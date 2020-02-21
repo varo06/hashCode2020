@@ -16,7 +16,7 @@ public class main {
 			int i = 1;
 			
 			for(i = 0; i < librerias.size(); i++) {
-				if(A.diasQueTarda > librerias.get(i).diasQueTarda) {
+				if(A.diasQueTarda < librerias.get(i).diasQueTarda) {
 					
 				}else {
 					if(A.diasQueTarda == librerias.get(i).diasQueTarda){
@@ -35,7 +35,7 @@ public class main {
 					}
 				}
 			}
-			if(dias-A.diasQueTarda>0){
+			if(dias-A.signupdays>0){
 				for(Book book: A.books) {
 					for(Libreria lib : librerias) {
 						for(int j = 0; j < lib.books.size(); j++) {
@@ -49,7 +49,8 @@ public class main {
 					}
 				}
 				libreriasOrdenada.add(A);
-				calcularOrdenLibreria(librerias.remove(0), librerias, libreriasOrdenada, dias-A.signupdays);
+				int diasSiguiente = dias-A.signupdays;
+				calcularOrdenLibreria(librerias.remove(0), librerias, libreriasOrdenada, diasSiguiente);
 			}
 		}
 	}

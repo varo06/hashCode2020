@@ -16,13 +16,14 @@ public class Output {
         FileWriter fw = new FileWriter(fichero);
         BufferedWriter bw = new BufferedWriter(fw);
         
-        bw.write(Integer.toString(librerias.size())+ "\n");
+        bw.write(Integer.toString(librerias.size()));
         for(Libreria libreria: librerias) {
-        	bw.write(Integer.toString(libreria.id) + " " + Integer.toString(libreria.books.size()) + "\n");
-        	for(Book book: libreria.books) {
-        		bw.write(Integer.toString(book.id) + " ");
+	        	if(libreria.books.size()>0) {
+	        		bw.write("\n" + Integer.toString(libreria.id) + " " + Integer.toString(libreria.books.size()) + "\n");
+	        	for(Book book: libreria.books) {
+	        		bw.write(Integer.toString(book.id) + " ");
+	        	}
         	}
-        	bw.write("\n");
         }
         bw.close();
 	}
