@@ -43,9 +43,7 @@ public class input {
 				switch (nLinea) {
 					case 0:
 						//Books librerias Dias
-						System.out.print("hola");
 						nLibros=Integer.parseInt(orden[0]);
-						System.out.println(nLibros);
 						nLibrerias = Integer.parseInt(orden[1]);
 						nDias = Integer.parseInt(orden[2]);
 						break;

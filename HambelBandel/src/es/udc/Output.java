@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.util.List;
 
 public class Output {
-	public void generarSalida(List<Libreria> librerias) throws IOException {
-		File fichero = new File ("output.txt");
+	public void generarSalida(String nombresalida,List<Libreria> librerias) throws IOException {
+		File fichero = new File (nombresalida);
 		if(!fichero.exists()) {
 			fichero.createNewFile();
 		}

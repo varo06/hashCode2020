@@ -65,13 +65,38 @@ public class main {
 	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		File file = new File(args[0]);
-		input prueba = new input(file);
-		prueba.LeerArchivo();
-		ArrayList<Libreria> libreriasOrdenada = new ArrayList<Libreria>();
-		algoritmo(prueba.listaLibrerias, libreriasOrdenada, prueba.nDias);
-		Output output = new Output();
-		output.generarSalida(libreriasOrdenada);
-	}
+		for (int i=0; i<args.length;i++) {
+		
+				File file = new File(args[i]);
+				input prueba = new input(file);
+				prueba.LeerArchivo();
+				ArrayList<Libreria> libreriasOrdenada = new ArrayList<Libreria>();
+				algoritmo(prueba.listaLibrerias, libreriasOrdenada, prueba.nDias);
+				Output output = new Output();
+				String nombre = null;
+				switch (i) {
+					case 0:
+							nombre=("outputA.txt");
+							break;
+					case 1:
+						nombre=("outputB.txt");
+						break;
+					case 2:
+						nombre=("outputC.txt");
+						break;
+					case 3:
+						nombre=("outputD.txt");
+						break;
+					case 4:
+						nombre=("outputE.txt");
+						break;
+					case 5:
+						nombre=("outputF.txt");
+						break;
+					}
+				output.generarSalida(nombre, libreriasOrdenada);
+		}
+		
+		}
 
 }
